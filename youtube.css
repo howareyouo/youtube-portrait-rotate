@@ -1,26 +1,23 @@
 * {
   --text: #999;
+  --text-dark: #888;
   --text-hover: #ccc;
-  --ytd-author-comment-badge-background-color: #444 !important;
-  --ytd-searchbox-text-color: var(--text);
+  --more-space: 45px;
   --paper-checkbox-unchecked-color: var(--text);
   --ytmusic-overlay-text-secondary: var(--text);
+  --ytd-author-comment-badge-background-color: #444 !important;
+  --ytd-searchbox-text-color: var(--text);
   --yt-button-icon-button-text-color: var(--text);
-  --yt-endpoint-hover-color: var(--text-hover);
-  --yt-endpoint-color: var(--text);
-  --yt-spec-static-brand-white: #ccc;
+  --yt-spec-static-brand-white: var(--text-hover);
   --yt-spec-icon-active-other: var(--text);
   --yt-spec-text-primary: var(--text);
-  --yt-spec-text-secondary: #888;
+  --yt-spec-text-secondary: var(--text-dark);
   --yt-spec-call-to-action: #555;
-  --more-space: 45px;
-}
-
-* {
+  --yt-endpoint-color: #666;
   color: var(--text)
 }
 
-[role="button"]:hover *,
+[role=button]:hover *,
 button:hover *,
 a:hover *,
 a:hover {
@@ -28,7 +25,12 @@ a:hover {
 }
 
 a:visited {
-  color: #888
+  color: var(--text-dark)
+}
+
+.yt-tooltip-renderer,
+.html5-ypc-purchase {
+  color: #333
 }
 
 yt-chip-cloud-chip-renderer:hover,
@@ -67,8 +69,7 @@ tp-yt-paper-button:hover,
   opacity: .8
 }
 
-.ytp-portrait-button svg,
-.ytp-rotate-button svg {
+.ytp-custom-button svg {
   vertical-align: middle;
   height: 24px;
   width: 100%;
@@ -84,11 +85,11 @@ tp-yt-paper-button:hover,
 }
 
 ytd-watch-flexy[portrait] {
-  --ytd-watch-flexy-structured-description-max-height: var(--ytd-portrait-height) !important;
-  --ytd-watch-flexy-comments-panel-max-height: var(--ytd-portrait-height) !important;
-  --ytd-watch-flexy-panel-max-height: var(--ytd-portrait-height) !important;
-  --ytd-watch-flexy-chat-max-height: var(--ytd-portrait-height) !important;
-  --ytd-playlist-panel-renderer: var(--ytd-portrait-height) !important;
+  --ytd-watch-flexy-structured-description-max-height: var(--portrait-height) !important;
+  --ytd-watch-flexy-comments-panel-max-height: var(--portrait-height) !important;
+  --ytd-watch-flexy-panel-max-height: var(--portrait-height) !important;
+  --ytd-watch-flexy-chat-max-height: var(--portrait-height) !important;
+  --ytd-playlist-panel-renderer: var(--portrait-height) !important;
   --ytd-watch-flexy-height-ratio: 1.77778;
   --ytd-watch-flexy-width-ratio: 1;
 }
@@ -98,7 +99,7 @@ ytd-watch-flexy[theater][portrait] #player-theater-container {
 }
 
 ytd-watch-flexy[portrait] #player-container-inner {
-  padding-top: var(--ytd-portrait-height) !important
+  padding-top: var(--portrait-height) !important
 }
 
 .html5-video-container {
