@@ -1,6 +1,6 @@
 var player, video, flexy, app,
-  rbtn = document.createElement('a'),
-  pbtn = document.createElement('a')
+    rbtn = document.createElement('a'),
+    pbtn = document.createElement('a')
 rbtn.innerHTML = '<svg viewBox="0 0 800 740"><path d="M426.38-.745a369.56 369.56 0 0 0-265.283 111.02l21.775 21.468C364.552-53.82 678.981 26.877 748.844 276.998c69.863 250.122-157.238 482.077-408.781 417.519C190.711 656.186 86.355 521.47 86.573 367.278v-12.574h53.67l-69.311-88.019-69.005 88.019h54.59v12.574c-2.124 285.421 305.526 466.108 553.77 325.237 248.243-140.871 250.898-497.647 4.779-642.197A370.793 370.793 0 0 0 426.38-.745z"/><path d="M214.46 487.805v30.669h184.012v-273.87H214.46v153.342h153.343v92.006zm30.669-122.674v-89.859h122.674v92.006zm368.023 153.036V244.604H429.14v273.87h184.012zm-153.343-30.668V275.272h122.674v214.68zm153.343-304.232h30.668v30.361h-30.668z"/></svg>'
 rbtn.className = 'ytp-button ytp-custom-button'
 rbtn.title = 'Rotate 90° (r)'
@@ -21,23 +21,24 @@ function portrait () {
       flexy.setAttribute('is-four-three-to-sixteen-nine-video_', '')
       flexy.removeAttribute('is-vertical-video_')
     }
-    app.style.removeProperty('--ytd-toolbar-height', 0)
+    app.removeAttribute('masthead-hidden')
+    app.style.removeProperty('--ytd-masthead-height')
   } else {
-    let wh = window.innerHeight - 169
+    let wh = window.innerHeight - 169 + 56
     let vh = 1.7777777 * player.clientWidth
     flexy.style.setProperty('--portrait-height', Math.min(wh, vh) + 'px')
     flexy.removeAttribute('is-four-three-to-sixteen-nine-video_')
     flexy.setAttribute('is-vertical-video_', '')
-    app.style.setProperty('--ytd-toolbar-height', 0)
+    app.setAttribute('masthead-hidden', '')
+    app.style.setProperty('--ytd-masthead-height', 0)
   }
   flexy.toggleAttribute('portrait')
-  app.toggleAttribute('masthead-hidden')
 }
 
 function rotate (resize, reset) {
   var height = player.clientHeight + 'px',
-    width  = player.clientWidth + 'px',
-    rotate = 0
+      width  = player.clientWidth + 'px',
+      rotate = 0
 
   if (!reset) {
     rotate = Number.parseInt(player.style.getPropertyValue('--video-rotate')) || 0
