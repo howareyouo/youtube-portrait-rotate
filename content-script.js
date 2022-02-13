@@ -15,23 +15,23 @@ function portrait () {
   if (!flexy) {
     flexy = document.querySelector('ytd-watch-flexy')
     flexy.isVerticalVideo = flexy.hasAttribute('is-vertical-video_')
+    // flexy.removeAttribute('is-four-three-to-sixteen-nine-video_')
   }
   if (flexy.hasAttribute('portrait')) {
     if (!flexy.isVerticalVideo) {
-      flexy.setAttribute('is-four-three-to-sixteen-nine-video_', '')
       flexy.removeAttribute('is-vertical-video_')
     }
-    app.style.removeProperty('--ytd-toolbar-height', 0)
+    app.removeAttribute('masthead-hidden')
+    app.style.removeProperty('--ytd-masthead-height')
   } else {
-    let wh = window.innerHeight - 169
+    let wh = window.innerHeight - 169 + 56
     let vh = 1.7777777 * player.clientWidth
     flexy.style.setProperty('--portrait-height', Math.min(wh, vh) + 'px')
-    flexy.removeAttribute('is-four-three-to-sixteen-nine-video_')
     flexy.setAttribute('is-vertical-video_', '')
-    app.style.setProperty('--ytd-toolbar-height', 0)
+    app.style.setProperty('--ytd-masthead-height', 0)
+    app.setAttribute('masthead-hidden', '')
   }
   flexy.toggleAttribute('portrait')
-  app.toggleAttribute('masthead-hidden')
 }
 
 function rotate (resize, reset) {
@@ -99,3 +99,16 @@ if (ctrls) {
   document.body.addEventListener('keydown', keydown)
   new ResizeObserver(() => setTimeout(rotate, 50, 1)).observe(player)
 }
+
+chrome.runtime.onMessage.addListener(message => {
+  switch (message.name) {
+    case 'header':
+      break
+    case 'height':
+      break
+    case 'theme':
+      break
+  }
+})
+
+
